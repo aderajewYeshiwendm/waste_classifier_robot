@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="coke">
+  <link name="tin">
+    <collision>
+      <origin xyz="1.8 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.09" length="0.3"/>
+      </geometry>
+    </collision>
+  
+    <visual>
+      <origin xyz="1.8 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.09" length="0.3"/>
+      </geometry>
+    </visual>
+  
+    <inertial>
+      <origin xyz="1.8 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="0.008" ixy="0.0" ixz="0.0" iyy="0.008" iyz="0.0" izz="0.0253"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="tin">
+    <material>Gazebo/Red</material>
+  </gazebo>
+</robot>
