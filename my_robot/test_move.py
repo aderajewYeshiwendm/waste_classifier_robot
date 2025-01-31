@@ -22,14 +22,12 @@ class TrajectoryPublisher(Node):
         # Toolbox interface
         self.robot_initialize(urdf_file)
         self.coordinates = [
-            (1.7, 0.0, 0.2, 'o'),
-            (1.7, 0.0, 0.2, 'c'),
-            
-            (1.7, 1.0, 0.5, 'c'),
-            (1.0, 1.0, 1.0, 'o'),
-            
-            (1.7, 1.5, 1.5, 'c'),
-            (1.7, 1.5, 1.5, 'o'),
+            (1.8, 0.0, 0.1, 'o'),
+            (1.8, 0.0, 0.0, 'c'),
+            (1.8, 0.0, 0.3, 'c'),
+            (1.8, 0.0, 0.7, 'c'),
+            (1.3, 1.8, 0.5, 'c'),
+            (1.3, 1.8, 0.1, 'o'),  
         ]
         self.goal_positions = []
 
@@ -41,11 +39,15 @@ class TrajectoryPublisher(Node):
         angles = np.delete(angles, [0, 4, 5])
 
         if claw == "o":
+            time.sleep(2)
             print("\nClaw Open\n")
             self.goal_positions = list(np.append(angles, [0.00, 0.00]))
+            
         elif claw == "c":
+            time.sleep(2)
             print("\nClaw Closed\n")
-            self.goal_positions = list(np.append(angles, [-0.05, 0.05]))
+            self.goal_positions = list(np.append(angles, [-0.1, 0.1]))
+            time.sleep(2)
         else:
             print("\nInvalid claw state. Expected 'o' (open) or 'c' (closed).\n")
             self.goal_positions = []
@@ -60,7 +62,7 @@ class TrajectoryPublisher(Node):
             my_robot_trajectory_msg.joint_names = self.joints
             point = JointTrajectoryPoint()
             point.positions = self.goal_positions
-            point.time_from_start = Duration(sec=5)
+            point.time_from_start = Duration(sec=2)
             my_robot_trajectory_msg.points.append(point)
             self.trajectory_publisher.publish(my_robot_trajectory_msg)
             self.get_logger().info("Trajectory sent for coordinates: x={}, y={}, z={}, claw={}".format(x, y, z, claw))
@@ -99,4 +101,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-

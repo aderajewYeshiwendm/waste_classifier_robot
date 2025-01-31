@@ -242,7 +242,7 @@
 </gazebo>
 
 <joint name="camera_joint" type="fixed">
-    <origin xyz="0.15 0 -0.1" rpy="0 -1.5708 0"/>
+    <origin xyz="-0.15 0 0.1" rpy="0 -1.5708 0"/>
     <parent link="link4"/>
     <child link="camera_link"/>
   </joint>
@@ -252,14 +252,14 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <box size="0.05 0.05 0.05"/>
+    <box size="0.1 0.1 0.1"/>
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <box size="0.05 0.05 0.05"/>
+    <box size="0.1 0.1 0.1"/>
       </geometry>
     </visual>
 
@@ -282,22 +282,22 @@
 	<child link="link5"/>
 	<origin xyz="0 0.2 0" rpy="0 0 0"/>
 	<axis xyz="0 1 0"/>
-	<limit effort="50" velocity="100" lower="-0.16" upper="0.0"/>
-	<dynamics damping="10" friction="1.0"/>
+	<limit effort="50" velocity="100" lower="-0.3" upper="0.0"/> 
+	<dynamics damping="5" friction="2.0"/>
 </joint>
 
 <link name="link5">
 	<collision>
 		<origin xyz="0 0 0.32" rpy="0 0 0"/>
 		<geometry>
-			<box size="0.2 0.05 0.7"/>
+			<box size="0.2 0.1 0.7"/>
 		</geometry>
 	</collision>
 
 	<visual>
 		<origin xyz="0 0 0.32" rpy="0 0 0"/>
 		<geometry>
-			<box size="0.2 0.05 0.7"/>
+			<box size="0.2 0.1 0.7"/>
 		</geometry>
 	</visual>
 
@@ -322,22 +322,22 @@
 	<child link="link6"/>
 	<origin xyz="0 -0.2 0" rpy="0 0 0"/>
 	<axis xyz="0 1 0"/>
-	<limit effort="50" velocity="100" lower="0.0" upper="0.16"/>
-	<dynamics damping="10" friction="1.0"/>
+	<limit effort="50" velocity="100" lower="0.0" upper="0.3"/>  <!-- joint6 -->
+	<dynamics damping="5" friction="2.0"/>
 </joint>
 
 <link name="link6">
 	<collision>
 		<origin xyz="0 0 0.32" rpy="0 0 0"/>
 		<geometry>
-			<box size="0.2 0.0.5 0.7"/>
+			<box size="0.2 0.05 0.7"/>
 		</geometry>
 	</collision>
 
 	<visual>
 		<origin xyz="0 0 0.32" rpy="0 0 0"/>
 		<geometry>
-			<box size="0.2 0.05 0.7"/>
+			<box size="0.2 0.1 0.7"/>
 		</geometry>
 	</visual>
 
@@ -473,4 +473,3 @@
 
 
 </robot>
-
